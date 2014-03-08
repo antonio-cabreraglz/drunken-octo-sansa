@@ -21,9 +21,14 @@ task :deploy do
   system 'git commit -am "build"'
   
   system 'git status'
+=begin  
   File.open('.git/credentials', 'w') do |f|
     f.write("https://#{ENV['GH_TOKEN']}:@github.com")
   end
+=end
   system "git fetch"
-  system "git push origin build"
+  system "git checkout build"
+  system "git merge -s ours master"
+  system "git checkout master"
+  system "git merge build"
 end
