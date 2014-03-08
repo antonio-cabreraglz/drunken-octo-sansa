@@ -1,0 +1,18 @@
+language: ruby
+rvm:
+- 2.1.0
+branches:
+  only:
+  - develop
+before_install:
+- gem update
+before_script:
+- git config --global user.name "Antonio Cabrera"
+- git config --global user.email "antonio.cabreraglz@gmail.com"
+
+after_success:
+- bundle exec rake deploy
+
+env:
+  global:
+    secure: v11fpxT5YnKQPBJKF3siSqZWpMMGzoFe2JtR0AwXGzwSR9ie+Tihka/zZla2+AOF7qC5nmYhrveWa3VqAD7w5M0dtQosOarq1LY17vTEGGMhYo3v5dYwXzVXOFZPIgDOa6VhXm9tftnj9oFkwukV5fKgm5fxvJcrJQzywypdvEI=
