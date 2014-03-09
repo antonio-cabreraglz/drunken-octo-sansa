@@ -5,6 +5,9 @@ rvm:
 branches:
   only:
   - develop
+  except:
+  - master
+  
 before_install:
 - gem update
 before_script:
