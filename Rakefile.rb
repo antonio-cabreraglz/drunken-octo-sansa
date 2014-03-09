@@ -26,9 +26,11 @@ task :deploy do
     f.write("https://#{ENV['GH_TOKEN']}:@github.com")
   end
 =end
-  system "git fetch"
-  system "git checkout build"
+  system "git fetch origin"
+  system "git checkout master"
+  system 'git checkout build'
   system "git merge -s ours master"
   system "git checkout master"
   system "git merge build"
+  system "git push"
 end
