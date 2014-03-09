@@ -29,8 +29,12 @@ task :deploy do
   system "git fetch origin"
   system "git checkout master"
   system 'git checkout build'
+  system 'git branch -m master old-master'
+  system 'git branch -m build master'
+=begin
   system "git merge -s ours master"
   system "git checkout master"
   system "git merge build"
-  system "git push"
+=end  
+  system "git push origin master"
 end
