@@ -3,3 +3,4 @@ markdown: redcarpet
 pygments: true
 
 exclude: [Gemfile, Gemfile.lock, Rakefile.rb]
+include: [.travis.yml]

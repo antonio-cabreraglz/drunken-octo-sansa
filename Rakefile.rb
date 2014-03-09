@@ -9,6 +9,7 @@ end
 task :deploy do
   Dir.chdir "_site"
   system "git status"
+  system "git add ."
   system 'git commit -am "Deploy"'
   system 'git push' 
 end
