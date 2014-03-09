@@ -2,4 +2,4 @@ name: Your New Jekyll Site
 markdown: redcarpet
 pygments: true
 
-exclude: [Gemfile, Gemfile.lock, .travis.yml, .gitignore, Rakefile.rb]
+exclude: [Gemfile, Gemfile.lock,  .gitignore, Rakefile.rb]
