@@ -5,7 +5,7 @@ require 'w3c_validators'
 
 include W3CValidators
 
-task :default => [:install_juicer, :test, :minify_css, :minify_js, :build]
+task :default => [:install_juicer, :test_assets, :minify_css, :minify_js, :build, :test_html]
 
 task :install_juicer do
   sh "juicer install yui_compressor"
@@ -16,11 +16,20 @@ task :build do
   sh 'jekyll build'
 end
 
-Rake::TestTask.new(:test) do |test|
+Rake::TestTask.new(:test_html) do |test|
   test.libs << 'test'
 
   # ensure the sample test file is included here
-  test.test_files = FileList['test/*_test.rb']
+  test.test_files = FileList['test/html_test.rb', 'test/pagespeed_test.rb']
+
+  test.verbose = true
+end
+
+Rake::TestTask.new(:test_assets) do |test|
+  test.libs << 'test'
+
+  # ensure the sample test file is included here
+  test.test_files = FileList['test/css_test.rb', 'test/js_test.rb']
 
   test.verbose = true
 end
