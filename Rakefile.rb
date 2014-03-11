@@ -1,10 +1,11 @@
 require 'rubygems'
+require 'rake/testtask'
+
 require 'w3c_validators'
-require 'jshint/tasks'
 
 include W3CValidators
 
-task :default => [:install_juicer, :build]
+task :default => [:build]
 
 task :install_juicer do
   sh "juicer install yui_compressor"
@@ -16,6 +17,16 @@ end
 task :build do
   sh 'jekyll build'
 end
+
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'test'
+
+  # ensure the sample test file is included here
+  test.test_files = FileList['test/*_test.rb']
+
+  test.verbose = true
+end
+
 
 task :deploy do
   Dir.chdir "_site"
@@ -37,5 +48,3 @@ task :minify_js do
     sh "juicer merge #{f} --force"
   end
 end
-
-

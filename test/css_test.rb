@@ -4,8 +4,8 @@ require 'w3c_validators'
 include W3CValidators
 
 
-class CssTest < MiniTest::Test
-  Dir.glob("_site/**/*.css").each do |file|
+class CssTest < MiniTest::Unit::TestCase
+  Dir.glob("css/**/*.css").each do |file|
     define_method "test_#{file}" do
       puts file
       @validator_css = CSSValidator.new

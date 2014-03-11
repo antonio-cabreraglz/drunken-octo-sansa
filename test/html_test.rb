@@ -4,7 +4,7 @@ require 'w3c_validators'
 include W3CValidators
 
 
-class HtmlTest < MiniTest::Test
+class HtmlTest < MiniTest::Unit::TestCase
   Dir.glob("_site/**/*.html").each do |file|
     define_method "test_#{file}" do
       

@@ -1,11 +1,11 @@
 require 'minitest/autorun'
 require 'jshintrb'
 
-class JsTest < MiniTest::Test
-  Dir.glob("_site/**/*.js").each do |file|
+class JsTest < MiniTest::Unit::TestCase
+  Dir.glob("js/**/*.js").each do |file|
     define_method "test_#{file}" do
-    
-      results = Jshintrb.lint(File.read("test.js"))
+      puts "Validating : #{file}"
+      results = Jshintrb.lint(File.read("#{file}"))
       valid = false
 
       if results.length == 0
