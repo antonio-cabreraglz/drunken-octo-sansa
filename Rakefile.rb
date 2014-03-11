@@ -39,9 +39,7 @@ task :deploy do
   Dir.chdir "_site"
   system "git status"
   system "git add ."
-  deploy_number = ENV['TRAVIS_BUILD_NUMBER']
-  system 'echo "Deploy number: #{deploy_number}"'
-  system 'git commit -am "Deploy #{deploy_number}"'
+  system 'git commit -am "Deploy From Travis"'
   system 'git push' 
 end
 
